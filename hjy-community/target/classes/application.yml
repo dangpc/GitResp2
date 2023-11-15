@@ -1,0 +1,62 @@
+# ��Ŀ�������
+hjy-community:
+  # ����
+  name: hjy-community
+  # �汾
+  version: 1.0.0
+
+# ������������
+server:
+  #��������HTTP�˿�
+  port: 8888
+  servlet:
+    # Ӧ�õķ���·��
+    context-path: /hejiayun
+  tomcat:
+    # tomcat��URI����
+    uri-encoding: UTF-8
+    # tomcat����߳�����Ĭ��Ϊ200
+    max-threads: 800
+    # Tomcat������ʼ�����߳�����Ĭ��ֵ25
+    min-spare-threads: 30
+
+# ��־����
+logging:
+  level:
+    com.msb: debug
+    org.springframework: warn
+
+# Spring����
+spring:
+  profiles:
+    active: druid
+
+# MyBatis����
+
+# PageHelper��ҳ���
+pagehelper:
+  #���ݿ�����
+  helperDialect: mysql
+  #��ѯ���� ���ò�������Ϊ true ʱ��pageNum<=0 ʱ���ѯ��һҳ�� pageNum>pages����������ʱ�������ѯ���һҳ
+  reasonable: true
+  # �Զ���ҳ�����ã����ݵ�����Σ������������pageNum��pageSize��ҳ����������Զ���ҳ
+  supportMethodsArguments: true
+  # params��Ϊ��֧��startPage(Object params)�����������˸ò��������ò���ӳ�䣬���ڴӶ����и���������ȡֵ
+  params: count=countSql
+
+## mybatis-plus����
+mybatis-plus:
+  ## plus��ʵ�������������Ҫд��ʵ���������·����ֻ��Ҫд����������
+  type-aliases-package: com.myx.hjycommunity.**.domain
+  ## mybatis  mapper.xml��λ��
+  mapper-locations: classpath:mapper/**/*Mapper.xml
+  ## mybatis  config�������ļ�λ��
+
+  config-location: classpath:mybatis/mybatis-config.xml
+  ## ȫ������
+  global-config:
+    db-config:
+      ## id���ɲ���Ϊѩ��id
+      id-type: assign_id
+    ## ������mybatis-plus��banner
+    banner: false
